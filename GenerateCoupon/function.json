@@ -1,0 +1,30 @@
+{
+    "bindings": [
+      {
+        "authLevel": "function",
+        "name": "req",
+        "type": "httpTrigger",
+        "direction": "in"
+      },
+      {
+        "name": "$return",
+        "type": "http",
+        "direction": "out"
+      },
+      {
+        "type": "blob",
+        "name": "inputCoupon",
+        "connection": "BlobStorageConnection",
+        "direction": "inOut",
+        "path": "coupons/coupon.jpg"
+      },
+      {
+        "type": "blob",
+        "name": "outputBlob",
+        "connection": "BlobStorageConnection",
+        "direction": "inOut",
+        "path": "coupons/{rand-guid}.jpg"
+      }
+    ],
+    "disabled": false
+  }
