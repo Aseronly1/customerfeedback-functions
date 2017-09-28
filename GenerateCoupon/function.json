@@ -26,5 +26,7 @@
         "path": "coupons/{rand-guid}.jpg"
       }
     ],
+    "scriptFile": "../GenerateCoupon.dll",
+    "entryPoint": "CustomerFeedback.GenerateCoupon.Run",  
     "disabled": false
   }

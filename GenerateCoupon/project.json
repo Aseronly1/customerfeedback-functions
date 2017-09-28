@@ -1,9 +1,0 @@
-{
-    "frameworks": {
-      "net46":{
-        "dependencies": {
-          "System.Drawing.Primitives": "4.3.0"
-        }
-      }
-     }
-  }
