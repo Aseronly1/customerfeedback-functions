@@ -2,7 +2,7 @@
   "disabled": false,
   "bindings": [
     {
-      "webHookType": "genericJS",
+      "webHookType": "genericJson",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req"
