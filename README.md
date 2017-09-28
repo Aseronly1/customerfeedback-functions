@@ -1,2 +1,2 @@
 # customerfeedback-functions
-Azure Function written in C# to generate discount coupons.
+Azure Function written in Node JS to generate discount coupons.
