@@ -23,7 +23,7 @@ module.exports = function (context, data) {
         // Load font
         Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) {
             // Write the customer name on the image
-            image.print(font, 60, 150, "25% off voucher for " + name);
+            image.print(font, 60, 150, "25% off voucher for " + name, 500);
             // Get the image as a stream
             image.getBuffer(Jimp.MIME_JPEG, (error, buffer) => {
 
