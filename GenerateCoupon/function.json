@@ -1,32 +1,23 @@
 {
-    "bindings": [
-      {
-        "authLevel": "function",
-        "name": "req",
-        "type": "httpTrigger",
-        "direction": "in"
-      },
-      {
-        "name": "$return",
-        "type": "http",
-        "direction": "out"
-      },
-      {
-        "type": "blob",
-        "name": "inputCoupon",
-        "connection": "BlobStorageConnection",
-        "direction": "inOut",
-        "path": "coupons/coupon.jpg"
-      },
-      {
-        "type": "blob",
-        "name": "outputBlob",
-        "connection": "BlobStorageConnection",
-        "direction": "inOut",
-        "path": "coupons/{rand-guid}.jpg"
-      }
-    ],
-    "scriptFile": "..\\bin\\GenerateCoupon.dll",
-    "entryPoint": "CustomerFeedback.GenerateCoupon.Run",  
-    "disabled": false
-  }
+  "disabled": false,
+  "bindings": [
+    {
+      "webHookType": "genericJS",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "blob",
+      "name": "outputBlob",
+      "path": "coupons/{name}.jpg",
+      "connection": "BlobStorageConnection",
+      "direction": "out"
+    }
+  ]
+}
