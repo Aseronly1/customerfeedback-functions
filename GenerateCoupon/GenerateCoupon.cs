@@ -3,6 +3,9 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions;
+using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
@@ -15,11 +18,20 @@ using SixLabors.Primitives;
 
 namespace CustomerFeedback
 {
-
     class GenerateCoupon {
-        public async static Task<HttpResponseMessage> Run(HttpRequestMessage req, CloudBlockBlob inputCoupon, CloudBlockBlob outputBlob, TraceWriter log)
-        {
+        [StorageAccount("BlobStorageConnection")]
+[       FunctionName("GenerateCoupon")] 
+        public async static Task<HttpResponseMessage> Run(
             
+            [HttpTrigger(AuthorizationLevel.Anonymous, WebHookType = "genericJson")] HttpRequestMessage req,
+
+            CloudBlockBlob inputCoupon,
+
+            [Blob("coupons/{rand-guid}.jpg", FileAccess.Write)] CloudBlockBlob outputBlob,
+
+            TraceWriter log,
+            ExecutionContext context)
+        {
             // Get request body
             var json = req.Content.ReadAsStringAsync().Result;
             dynamic data = JsonConvert.DeserializeObject(json);
@@ -28,6 +40,8 @@ namespace CustomerFeedback
             string name = data?.CustomerName;
             
             log.Info("Received coupon request for: " + name);
+			log.Info("Function directory: " + context.FunctionDirectory);
+			log.Info("Function App directory: " + context.FunctionAppDirectory);
             
             // Generate Coupon Id
             Random _rdm = new Random();
