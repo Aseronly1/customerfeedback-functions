@@ -11,13 +11,6 @@
       "type": "http",
       "direction": "out",
       "name": "res"
-    },
-    {
-      "type": "blob",
-      "name": "outputBlob",
-      "path": "coupons/{name}.jpg",
-      "connection": "BlobStorageConnection",
-      "direction": "out"
     }
   ]
 }
