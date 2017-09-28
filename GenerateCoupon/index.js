@@ -5,6 +5,9 @@ var stream = require('stream');
 var util = require('util');
 
 module.exports = function (context, data) {
+
+    context.log(util.inspect(data, false, null))
+
     var name = data.body.CustomerName;
     var code = getRandomInt(100, 99999);
     var outputFileName = name + "_" + code + ".jpg";
